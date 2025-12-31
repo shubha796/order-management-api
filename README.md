@@ -35,3 +35,46 @@ ______________________________________
 
 3) Steps to run the project locally
 _____________________________________
+
+Prerequisites: PHP 8+, Composer, XAMPP (MySQL)
+
+git clone https://github.com/shubha796/order-management-api.git
+cd order-management-api
+composer install
+cp .env.example .env
+
+Create Database
+
+Start MySQL in XAMPP
+
+Create database (example: order_management)
+
+Update .env:
+
+DB_DATABASE=order_management
+DB_USERNAME=root
+DB_PASSWORD=
+
+php artisan key:generate
+php artisan migrate
+php artisan serve
+
+App runs at: http://localhost
+
+
+API Usage
+Endpoint : POST /api/orders
+
+Headers
+Accept: application/json
+Content-Type: application/json
+
+Body
+
+{
+  "order_date": "2025-01-01",
+  "items": [
+    { "product_name": "iPhone 17", "quantity": 1, "price": 2500 },
+    { "product_name": "phone cover", "quantity": 2, "price": 100 }
+  ]
+}
